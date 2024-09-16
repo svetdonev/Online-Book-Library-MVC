@@ -20,3 +20,23 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.book-card {
+    height: 100%;
+}
+
+    .book-card img {
+        object-fit: cover;
+        height: 300px;
+    }
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

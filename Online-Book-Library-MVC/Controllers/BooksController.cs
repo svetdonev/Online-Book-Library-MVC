@@ -13,7 +13,7 @@ namespace Online_Book_Library_MVC.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allbooks = await context.Books.ToListAsync();
+            var allbooks = await context.Books.Include(b => b.Publisher).ToListAsync();
             return View(allbooks);
         }
     }

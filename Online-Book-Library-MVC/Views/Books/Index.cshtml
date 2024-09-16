@@ -7,36 +7,37 @@
 <div class="row">
     @foreach (var book in Model)
     {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px;">
+        <div class="col-md-4 col-xs-6 mb-3">
+            <div class="card book-card">
                 <div class="row g-0">
                     <div class="col-md-12">
                         <div class="card-header text-white bg-info">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @book.Name
-                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
-                                </h5>
-                            </p>
+                            <h5 class="card-title">
+                                @book.Name
+                                <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                            </h5>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="@book.ImageUrl" width="100%" alt="@book.Name">
+                        <img src="@book.ImageUrl" alt="@book.Name">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
                             <p class="card-text">@book.Resume</p>
+                            <p class="card-text"><b>Pages: </b>@book.Pages</p>
+                            <p class="card-text"><b>Publish Year: </b>@book.PublishedYear</p>
+                            <p class="card-text"><b>Publisher: </b>@book.Publisher.Name</p>
                             <p class="card-text"><b>Genre: </b>@book.BookGenre</p>
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="card-footer ">
+                        <div class="card-footer">
                             <p class="card-text">
-                                <a class="btn btn-outline-primary float-right">
-                                    <i class="bi bi-eye-fill"></i> Show Details
-                                </a>
                                 <a class="btn btn-success text-white">
                                     <i class="bi bi-cart-plus"></i> Add to Cart (Price @book.Price.ToString("c"))
+                                </a>
+                                <a class="btn btn-outline-primary float-right">
+                                    <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
                             </p>
                         </div>
