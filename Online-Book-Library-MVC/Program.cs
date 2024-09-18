@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Library_MVC.Data;
+using Online_Book_Library_MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BookLibraryDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();

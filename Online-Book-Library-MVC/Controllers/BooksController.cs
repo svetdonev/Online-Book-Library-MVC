@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Library_MVC.Data;
+using Online_Book_Library_MVC.Services;
 
 namespace Online_Book_Library_MVC.Controllers
 {
     public class BooksController : Controller
     {
-        private readonly BookLibraryDbContext context;
-        public BooksController(BookLibraryDbContext context)
+        private readonly IBookService bookService;
+        public BooksController(IBookService bookService)
         {
-            this.context = context;
+            this.bookService = bookService;
         }
         public async Task<IActionResult> Index()
         {
-            var allbooks = await context.Books.Include(b => b.Publisher).ToListAsync();
+            var allbooks = await this.bookService.GetAll();
             return View(allbooks);
         }
     }
