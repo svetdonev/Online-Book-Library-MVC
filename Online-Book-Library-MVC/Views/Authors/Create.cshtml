@@ -1,0 +1,58 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Add a new author";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Add a new author</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview" style="max-width: 180px;" />
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageUrl" class="control-label"></label>
+                        <input asp-for="ImageUrl" class="form-control" />
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Bio" class="control-label"></label>
+                        <textarea rows="4" asp-for="Bio" class="form-control" placeholder="Add some Resume for the author.."></textarea>
+                        <span asp-validation-for="Bio" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Create" class="btn btn-primary float-end" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            var imageUrlInput = $('#ImageUrl');
+
+            output.src = imageUrlInput.val();
+
+            imageUrlInput.on("input", function () {
+                output.src = $(this).val();
+            });
+        });
+    </script>
+}

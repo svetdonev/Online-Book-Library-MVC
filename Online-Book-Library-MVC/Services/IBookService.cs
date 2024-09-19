@@ -6,7 +6,7 @@ namespace Online_Book_Library_MVC.Services
     {
         Task<IEnumerable<Book>> GetAll();
         Book GetById(int id);
-        void AddBook(Book book);
+        void Add(Book book);
         Book Update(int id, Book newBook);
         void Delete(int id);
     }

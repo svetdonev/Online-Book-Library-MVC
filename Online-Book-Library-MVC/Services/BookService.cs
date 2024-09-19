@@ -11,7 +11,7 @@ namespace Online_Book_Library_MVC.Services
         {
             this.context = context;
         }
-        public void AddBook(Book book)
+        public void Add(Book book)
         {
             throw new NotImplementedException();
         }
