@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Online_Book_Library_MVC.Data;
 using Online_Book_Library_MVC.Models;
 using Online_Book_Library_MVC.Services;
 
@@ -15,7 +13,7 @@ namespace Online_Book_Library_MVC.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allAuthors = await this.authorService.GetAll();
+            var allAuthors = await this.authorService.GetAllAsync();
             return View(allAuthors);
         }
 
@@ -33,9 +31,23 @@ namespace Online_Book_Library_MVC.Controllers
                 return View(author);
             }
 
-            await this.authorService.Add(author);
+            await this.authorService.AddAsync(author);
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var authorDetails = await this.authorService.GetByIdAsync(id);
+
+            if(authorDetails == null)
+            {
+                return View("Empty");
+            }
+            else
+            {
+                return View(authorDetails);
+            }
+        }
     }
 }
