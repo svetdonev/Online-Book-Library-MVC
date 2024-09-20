@@ -9,6 +9,6 @@ namespace Online_Book_Library_MVC.Models
         public string Logo { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<Book> Books { get; set; }
+        public List<Book> Books { get; set; } = new List<Book>();
     }
 }

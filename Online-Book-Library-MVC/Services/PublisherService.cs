@@ -11,9 +11,10 @@ namespace Online_Book_Library_MVC.Services
         {
             this.context = context;
         }
-        public void Add(Publisher publisher)
+        public async Task Add(Publisher publisher)
         {
-            throw new NotImplementedException();
+            await this.context.Publishers.AddAsync(publisher);
+            await this.context.SaveChangesAsync();
         }
 
         public void Delete(int id)
