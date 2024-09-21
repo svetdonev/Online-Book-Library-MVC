@@ -11,7 +11,7 @@ namespace Online_Book_Library_MVC.Services
         {
             this.context = context;
         }
-        public async Task Add(Publisher publisher)
+        public async Task AddAsync(Publisher publisher)
         {
             await this.context.Publishers.AddAsync(publisher);
             await this.context.SaveChangesAsync();
@@ -22,16 +22,17 @@ namespace Online_Book_Library_MVC.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Publisher>> GetAll()
+        public async Task<IEnumerable<Publisher>> GetAllAsync()
         {
             var result = await this.context.Publishers.ToListAsync();
 
             return result;
         }
 
-        public Publisher GetById(int id)
+        public async Task<Publisher> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await this.context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
+            return result;
         }
 
         public Publisher Update(int id, Publisher newPublisher)

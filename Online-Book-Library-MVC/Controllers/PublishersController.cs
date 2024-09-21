@@ -15,7 +15,7 @@ namespace Online_Book_Library_MVC.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allPublishers = await this.publisherService.GetAll();
+            var allPublishers = await this.publisherService.GetAllAsync();
             return View(allPublishers);
         }
 
@@ -33,8 +33,23 @@ namespace Online_Book_Library_MVC.Controllers
                 return View(publisher);
             }
 
-            await this.publisherService.Add(publisher);
+            await this.publisherService.AddAsync(publisher);
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var publisherDetails = await this.publisherService.GetByIdAsync(id);
+
+            if(publisherDetails == null)
+            {
+                return View("Empty");
+            }
+            else
+            {
+                return View(publisherDetails);
+            }
         }
     }
 }
