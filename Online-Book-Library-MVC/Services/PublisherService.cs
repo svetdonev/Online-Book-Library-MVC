@@ -37,7 +37,9 @@ namespace Online_Book_Library_MVC.Services
 
         public async Task<Publisher> UpdateAsync(int id, Publisher newPublisher)
         {
-            throw new NotImplementedException();
+            this.context.Update(newPublisher);
+            await this.context.SaveChangesAsync();
+            return newPublisher;
         }
     }
 }

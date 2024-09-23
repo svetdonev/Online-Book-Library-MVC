@@ -44,12 +44,37 @@ namespace Online_Book_Library_MVC.Controllers
 
             if(publisherDetails == null)
             {
-                return View("Empty");
+                return View("NotFound");
             }
             else
             {
                 return View(publisherDetails);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var publisherDetails = await this.publisherService.GetByIdAsync(id);
+
+            if (publisherDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(publisherDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Logo, Name, Description")] Publisher publisher)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(publisher);
+            }
+
+            await this.publisherService.UpdateAsync(id, publisher);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Online-Book-Library-MVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+766d8c8e207268fbcf118038a2c2c5bf4f960dd8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32ad58959c8f5eafae4a14c49e885be881c8c070")]
 [assembly: System.Reflection.AssemblyProductAttribute("Online-Book-Library-MVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Online-Book-Library-MVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
