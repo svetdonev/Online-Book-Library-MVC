@@ -35,7 +35,7 @@ namespace Online_Book_Library_MVC.Services
             return result;
         }
 
-        public Publisher Update(int id, Publisher newPublisher)
+        public async Task<Publisher> UpdateAsync(int id, Publisher newPublisher)
         {
             throw new NotImplementedException();
         }

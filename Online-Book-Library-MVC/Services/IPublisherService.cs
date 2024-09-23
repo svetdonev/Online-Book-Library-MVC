@@ -7,7 +7,7 @@ namespace Online_Book_Library_MVC.Services
         Task<IEnumerable<Publisher>> GetAllAsync();
         Task<Publisher> GetByIdAsync(int id);
         Task AddAsync(Publisher publisher);
-        Publisher Update(int id, Publisher newPublisher);
+        Task<Publisher> UpdateAsync(int id, Publisher newPublisher);
         void Delete(int id);
     }
 }

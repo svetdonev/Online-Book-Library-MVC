@@ -35,9 +35,11 @@ namespace Online_Book_Library_MVC.Services
             return result;
         }
 
-        public Author Update(int id, Author newAuthor)
+        public async Task<Author> UpdateAsync(int id, Author newAuthor)
         {
-            throw new NotImplementedException();
+            this.context.Update(newAuthor);
+            await this.context.SaveChangesAsync();
+            return newAuthor;
         }
     }
 }

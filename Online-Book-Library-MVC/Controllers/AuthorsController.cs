@@ -42,12 +42,37 @@ namespace Online_Book_Library_MVC.Controllers
 
             if(authorDetails == null)
             {
-                return View("Empty");
+                return View("NotFound");
             }
             else
             {
                 return View(authorDetails);
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var authorDetails = await this.authorService.GetByIdAsync(id);
+
+            if (authorDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(authorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, ImageUrl, Bio")] Author author)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(author);
+            }
+
+            await this.authorService.UpdateAsync(id, author);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
