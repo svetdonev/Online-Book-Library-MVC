@@ -17,9 +17,11 @@ namespace Online_Book_Library_MVC.Services
             await this.context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await this.context.Authors.FirstOrDefaultAsync(a => a.Id == id);
+            this.context.Authors.Remove(result);
+            await this.context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Author>> GetAllAsync()

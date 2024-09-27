@@ -74,5 +74,32 @@ namespace Online_Book_Library_MVC.Controllers
             await this.authorService.UpdateAsync(id, author);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var authorDetails = await this.authorService.GetByIdAsync(id);
+
+            if (authorDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            return View(authorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var authorDetails = this.authorService.GetByIdAsync(id);
+
+            if(authorDetails == null)
+            {
+                return View("NotFound");
+            }
+
+            await this.authorService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

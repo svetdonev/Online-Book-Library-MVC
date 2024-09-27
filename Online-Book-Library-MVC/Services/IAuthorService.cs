@@ -8,6 +8,6 @@ namespace Online_Book_Library_MVC.Services
         Task<Author> GetByIdAsync(int id);
         Task AddAsync(Author author);
         Task<Author> UpdateAsync(int id, Author newAuthor);
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
