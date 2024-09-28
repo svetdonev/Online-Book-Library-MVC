@@ -8,6 +8,6 @@ namespace Online_Book_Library_MVC.Services
         Task<Publisher> GetByIdAsync(int id);
         Task AddAsync(Publisher publisher);
         Task<Publisher> UpdateAsync(int id, Publisher newPublisher);
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
