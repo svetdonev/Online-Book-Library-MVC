@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Online_Book_Library_MVC.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace Online_Book_Library_MVC.Models
 {
-    public class Author
+    public class Author : IEntityBase
     {
         [Key]
         public int Id { get; set; }
