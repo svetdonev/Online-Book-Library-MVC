@@ -1,13 +1,9 @@
-﻿using Online_Book_Library_MVC.Models;
+﻿using Online_Book_Library_MVC.Base;
+using Online_Book_Library_MVC.Models;
 
 namespace Online_Book_Library_MVC.Services
 {
-    public interface IPublisherService
+    public interface IPublisherService : IEntityBaseRepository<Publisher>
     {
-        Task<IEnumerable<Publisher>> GetAllAsync();
-        Task<Publisher> GetByIdAsync(int id);
-        Task AddAsync(Publisher publisher);
-        Task<Publisher> UpdateAsync(int id, Publisher newPublisher);
-        Task DeleteAsync(int id);
     }
 }

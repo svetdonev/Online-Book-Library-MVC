@@ -1,47 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Online_Book_Library_MVC.Base;
 using Online_Book_Library_MVC.Data;
 using Online_Book_Library_MVC.Models;
 
 namespace Online_Book_Library_MVC.Services
 {
-    public class PublisherService : IPublisherService
+    public class PublisherService : EntityBaseRepository<Publisher>, IPublisherService
     {
-        private readonly BookLibraryDbContext context;
-        public PublisherService(BookLibraryDbContext context)
+        public PublisherService(BookLibraryDbContext context) : base(context)
         {
-            this.context = context;
-        }
-        public async Task AddAsync(Publisher publisher)
-        {
-            await this.context.Publishers.AddAsync(publisher);
-            await this.context.SaveChangesAsync();
-        }
-
-        public async Task DeleteAsync(int id)
-        {
-            var result = await this.context.Publishers.FirstOrDefaultAsync(p => p.Id == id);
-            this.context.Publishers.Remove(result);
-            await this.context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<Publisher>> GetAllAsync()
-        {
-            var result = await this.context.Publishers.ToListAsync();
-
-            return result;
-        }
-
-        public async Task<Publisher> GetByIdAsync(int id)
-        {
-            var result = await this.context.Publishers.FirstOrDefaultAsync(x => x.Id == id);
-            return result;
-        }
-
-        public async Task<Publisher> UpdateAsync(int id, Publisher newPublisher)
-        {
-            this.context.Update(newPublisher);
-            await this.context.SaveChangesAsync();
-            return newPublisher;
         }
     }
 }
