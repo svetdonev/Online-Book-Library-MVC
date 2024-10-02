@@ -10,33 +10,17 @@ namespace Online_Book_Library_MVC.Services
         private readonly BookLibraryDbContext context;
         public BookService(BookLibraryDbContext context):base(context)
         {
+            this.context = context;
         }
 
-        /*public void Add(Book book)
+        public async Task<Book> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var bookDetails = this.context.Books
+                .Include(a => a.Author)
+                .Include(p => p.Publisher)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            return await bookDetails;
         }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<Book>> GetAll()
-        {
-            var result = await this.context.Books.Include(b => b.Publisher).ToListAsync();
-
-            return result;
-        }
-
-        public Book GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Book Update(int id, Book newBook)
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }

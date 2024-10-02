@@ -1,0 +1,66 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <h5 class="card-title mb-0">@Model.Name</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid p-2" style="max-width: 100%; height: auto;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Resume</p>
+
+                        <p class="card-text">
+                            <b>Publisher: </b>
+                            @if (Model.Publisher != null)
+                            {
+                                <a asp-controller="Publishers" asp-action="Details" asp-route-id="@Model.PublisherId" style="text-decoration: none;">
+                                    @Model.Publisher.Name
+                                </a>
+                            }
+                            else
+                            {
+                                <span>Unknown Publisher</span>
+                            }
+                        </p>
+                        <p class="card-text">
+                            <b>Author: </b>
+                            @if (Model.Author != null)
+                            {
+                                <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.AuthorId" style="text-decoration: none;">
+                                    @Model.Author.Name
+                                </a>
+                            }
+                            else
+                            {
+                                <span>Unknown Author</span>
+                            }
+                        </p>
+                        <p class="card-text"><b>Pages: </b>@Model.Pages</p>
+                        <p class="card-text"><b>Publish Year: </b>@Model.PublishedYear</p>
+                        <p class="card-text"><b>Genre: </b>@Model.BookGenre</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer text-muted">
+                        <a class="btn btn-success text-white">
+                            <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))
+                        </a>
+                        <a class="btn btn-outline-primary float-right" asp-action="Index">Back to Books</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

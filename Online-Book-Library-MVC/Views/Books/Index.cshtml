@@ -36,7 +36,7 @@
                                 <a class="btn btn-success text-white">
                                     <i class="bi bi-cart-plus"></i> Add to Cart (Price @book.Price.ToString("c"))
                                 </a>
-                                <a class="btn btn-outline-primary float-right">
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@book.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
                             </p>

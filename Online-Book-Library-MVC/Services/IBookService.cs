@@ -5,5 +5,6 @@ namespace Online_Book_Library_MVC.Services
 {
     public interface IBookService : IEntityBaseRepository<Book>
     {
+        Task<Book> GetByIdAsync(int id);
     }
 }

@@ -17,5 +17,18 @@ namespace Online_Book_Library_MVC.Controllers
             var allbooks = await this.bookService.GetAllAsync(x => x.Publisher);
             return View(allbooks);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var movieDetail = await this.bookService.GetByIdAsync(id);
+            return View(movieDetail);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Details()
+        {
+            return View();
+        }
     }
 }
