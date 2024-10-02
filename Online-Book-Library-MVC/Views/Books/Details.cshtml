@@ -20,7 +20,6 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <p class="card-text">@Model.Resume</p>
-
                         <p class="card-text">
                             <b>Publisher: </b>
                             @if (Model.Publisher != null)
@@ -34,23 +33,23 @@
                                 <span>Unknown Publisher</span>
                             }
                         </p>
-                        <p class="card-text">
-                            <b>Author: </b>
-                            @if (Model.Author != null)
-                            {
-                                <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.AuthorId" style="text-decoration: none;">
-                                    @Model.Author.Name
-                                </a>
-                            }
-                            else
-                            {
-                                <span>Unknown Author</span>
-                            }
-                        </p>
                         <p class="card-text"><b>Pages: </b>@Model.Pages</p>
                         <p class="card-text"><b>Publish Year: </b>@Model.PublishedYear</p>
                         <p class="card-text"><b>Genre: </b>@Model.BookGenre</p>
+                        <p class="card-text">
+                            <b>Author: </b>
+                            <hr />
+                            <div class="row">
+                                <div class="d-flex flex-column align-items-start">
+                                    <img class="border-info rounded-circle" src="@Model.Author.ImageUrl" style="max-width: 150px;" />
+                                    <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.Author.Id" class="text-decoration-none text-center" style="width: 150px;">
+                                        @Model.Author.Name
+                                    </a>
+                                </div>
+                            </div>
+                        </p>
                     </div>
+                    
                 </div>
                 <div class="col-md-12">
                     <div class="card-footer text-muted">
