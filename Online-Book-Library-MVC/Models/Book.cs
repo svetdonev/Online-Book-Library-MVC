@@ -1,10 +1,11 @@
-﻿using Online_Book_Library_MVC.Data.Enums;
+﻿using Online_Book_Library_MVC.Base;
+using Online_Book_Library_MVC.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Online_Book_Library_MVC.Models
 {
-    public class Book
+    public class Book : IEntityBase
     {
         [Key]
         public int Id { get; set; }

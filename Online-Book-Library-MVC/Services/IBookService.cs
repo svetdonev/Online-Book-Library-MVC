@@ -1,13 +1,9 @@
-﻿using Online_Book_Library_MVC.Models;
+﻿using Online_Book_Library_MVC.Base;
+using Online_Book_Library_MVC.Models;
 
 namespace Online_Book_Library_MVC.Services
 {
-    public interface IBookService
+    public interface IBookService : IEntityBaseRepository<Book>
     {
-        Task<IEnumerable<Book>> GetAll();
-        Book GetById(int id);
-        void Add(Book book);
-        Book Update(int id, Book newBook);
-        void Delete(int id);
     }
 }

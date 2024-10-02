@@ -14,7 +14,7 @@ namespace Online_Book_Library_MVC.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var allbooks = await this.bookService.GetAll();
+            var allbooks = await this.bookService.GetAllAsync(x => x.Publisher);
             return View(allbooks);
         }
     }

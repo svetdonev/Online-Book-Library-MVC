@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Online_Book_Library_MVC.Data;
+using System.Linq.Expressions;
 
 namespace Online_Book_Library_MVC.Base
 {
@@ -31,6 +32,14 @@ namespace Online_Book_Library_MVC.Base
         {
             var result = await this.context.Set<T>().ToListAsync();
             return result;
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = this.context.Set<T>();
+            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+
+            return await query.ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)

@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Online_Book_Library_MVC.Base;
 using Online_Book_Library_MVC.Data;
 using Online_Book_Library_MVC.Models;
 
 namespace Online_Book_Library_MVC.Services
 {
-    public class BookService : IBookService
+    public class BookService : EntityBaseRepository<Book>, IBookService
     {
         private readonly BookLibraryDbContext context;
-        public BookService(BookLibraryDbContext context)
+        public BookService(BookLibraryDbContext context):base(context)
         {
-            this.context = context;
         }
-        public void Add(Book book)
+
+        /*public void Add(Book book)
         {
             throw new NotImplementedException();
         }
@@ -36,6 +37,6 @@ namespace Online_Book_Library_MVC.Services
         public Book Update(int id, Book newBook)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }
