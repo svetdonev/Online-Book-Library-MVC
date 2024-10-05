@@ -30,5 +30,11 @@ namespace Online_Book_Library_MVC.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

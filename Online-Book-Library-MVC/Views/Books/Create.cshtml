@@ -1,0 +1,88 @@
+﻿@model BookCreateViewModel
+
+@{
+    ViewData["Title"] = "Create a new book";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h4>Create a new book</h4>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImageUrl" class="control-label"></label>
+                                <input asp-for="ImageUrl" class="form-control" id="ImageUrl" />
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Resume" class="control-label"></label>
+                                <input asp-for="Resume" class="form-control" />
+                                <span asp-validation-for="Resume" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PublishedYear" class="control-label"></label>
+                                <input asp-for="PublishedYear" class="form-control" />
+                                <span asp-validation-for="PublishedYear" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Pages" class="control-label"></label>
+                                <input asp-for="Pages" class="form-control" />
+                                <span asp-validation-for="Pages" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BookGenre" class="control-label"></label>
+                                <select asp-for="BookGenre" class="form-control"></select>
+                                <span asp-validation-for="BookGenre" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PublisherId" class="control-label"></label>
+                                <input asp-for="PublisherId" class="form-control" />
+                                <span asp-validation-for="PublisherId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="AuthorId" class="control-label"></label>
+                                <input asp-for="AuthorId" class="form-control" />
+                                <span asp-validation-for="AuthorId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 offset-md-4 text-center">
+                        <img width="100%" id="ImageURLPreview" />
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary">Create Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $("#ImageUrl").on("change", function () {
+            var output = document.getElementById("ImageURLPreview");
+            output.src = $(this).val();
+        });
+    </script>
+}
