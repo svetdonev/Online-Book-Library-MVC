@@ -6,11 +6,17 @@
 
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <h4>Create a new book</h4>
+        <p>
+            <h4>Create a new book</h4>
+        </p>
+        
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-md-4 offset-md-4 text-center">
+                        <img width="50%" id="ImageURLPreview" />
+                    </div>
 
                     <div class="row">
                         <div class="col-md-6">
@@ -26,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="Resume" class="control-label"></label>
-                                <input asp-for="Resume" class="form-control" />
+                                <textarea asp-for="Resume" class="form-control"></textarea>
                                 <span asp-validation-for="Resume" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -65,10 +71,6 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 offset-md-4 text-center">
-                        <img width="100%" id="ImageURLPreview" />
-                    </div>
-
                     <div class="form-group mt-3">
                         <button type="submit" class="btn btn-primary">Create Book</button>
                     </div>
@@ -80,9 +82,15 @@
 
 @section Scripts {
     <script>
-        $("#ImageUrl").on("change", function () {
-            var output = document.getElementById("ImageURLPreview");
-            output.src = $(this).val();
+        $(document).ready(function () {
+            var output = document.getElementById('ImageURLPreview');
+            var imageUrlInput = $('#ImageUrl');
+
+            output.src = imageUrlInput.val();
+
+            imageUrlInput.on("input", function () {
+                output.src = $(this).val();
+            });
         });
     </script>
 }
