@@ -8,39 +8,39 @@ namespace Online_Book_Library_MVC.Models
     {
 
         [Required(ErrorMessage = "Name is required")]
-        [Display(Description = "Book name")]
+        [Display(Name = "Book name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Image URL is required")]
-        [Display(Description = "Image URL")]
+        [Display(Name = "Image URL")]
         public string ImageUrl { get; set; }
 
         [Required(ErrorMessage = "Resume is required")]
-        [Display(Description = "Book resume")]
+        [Display(Name = "Book resume")]
         public string Resume { get; set; }
 
         [Required(ErrorMessage = "Price is required")]
-        [Display(Description = "Book price")]
+        [Display(Name = "Book price")]
         public double Price { get; set; }
 
         [Required(ErrorMessage = "Published Year is required")]
-        [Display(Description = "Book published year")]
+        [Display(Name = "Book published year")]
         public int PublishedYear { get; set; }
 
         [Required(ErrorMessage = "Pages field is required")]
-        [Display(Description = "Book pages")]
+        [Display(Name = "Book pages")]
         public int Pages { get; set; }
 
         [Required(ErrorMessage = "Book Genre is required")]
-        [Display(Description = "Select a genre:")]
+        [Display(Name = "Select a genre:")]
         public BookGenre BookGenre { get; set; }
 
         [Required(ErrorMessage = "Book publisher is required")]
-        [Display(Description = "Book publisher")]
+        [Display(Name = "Book publisher")]
         public int PublisherId { get; set; }
 
         [Required(ErrorMessage = "Book author is required")]
-        [Display(Description = "Book author")]
+        [Display(Name = "Book author")]
         public int AuthorId { get; set; }
     }
 }

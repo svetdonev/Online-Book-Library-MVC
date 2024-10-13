@@ -1,4 +1,5 @@
 ﻿@model BookCreateViewModel
+@using Online_Book_Library_MVC.Data.Enums
 
 @{
     ViewData["Title"] = "Create a new book";
@@ -55,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label asp-for="BookGenre" class="control-label"></label>
-                                <select asp-for="BookGenre" class="form-control"></select>
+                                <select asp-for="BookGenre" class="form-control" asp-items="Html.GetEnumSelectList<BookGenre>()"></select>
                                 <span asp-validation-for="BookGenre" class="text-danger"></span>
                             </div>
                             <div class="form-group">
