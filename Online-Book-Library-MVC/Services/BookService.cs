@@ -13,6 +13,27 @@ namespace Online_Book_Library_MVC.Services
             this.context = context;
         }
 
+        public async Task AddBookAsync(BookCreateViewModel book)
+        {
+            var newBook = new Book()
+            {
+                Name = book.Name,
+                ImageUrl = book.ImageUrl,
+                Resume = book.Resume,
+                Price = book.Price,
+                PublishedYear = book.PublishedYear,
+                Pages = book.Pages,
+                BookGenre = book.BookGenre,
+                PublisherId = book.PublisherId,
+                AuthorId = book.AuthorId,
+            };
+
+            await this.context.Books.AddAsync(newBook);
+            await this.context.SaveChangesAsync();
+
+
+        }
+
         public async Task<Book> GetByIdAsync(int id)
         {
             var bookDetails = this.context.Books

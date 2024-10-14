@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Library_MVC.Data;
+using Online_Book_Library_MVC.Models;
 using Online_Book_Library_MVC.Services;
 
 namespace Online_Book_Library_MVC.Controllers
@@ -35,6 +36,19 @@ namespace Online_Book_Library_MVC.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(BookCreateViewModel book)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(book);
+            }
+
+            await bookService.AddBookAsync(book);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
